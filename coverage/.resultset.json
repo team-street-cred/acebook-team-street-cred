@@ -1,0 +1,80 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/controllers/posts_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/models/like.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/models/post.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/models/user.rb": [
+        1,
+        null
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/rubykobayashi/Projects/Makers_wk8/acebook-team-street-cred/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1551201691
+  }
+}
