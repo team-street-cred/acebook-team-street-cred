@@ -10,11 +10,11 @@
     password: 'bbb', profile_pic_link: 'www.bob.com' },
 { first_name: 'Jane', last_name: 'Smith',
   pronoun: 'she', email: 'jane@jane.com',
-  password: 'jjj',
+  password: 'jjj', 
   profile_pic_link: 'www.jane.com' }])
 
 # posts = Post.create([{ users_id: 1, message: 'Hello World' },
-# { users_id: 2, message: 'Goodbye World'}])
+
 #
 
   # Character.create(name: 'Luke', movie: movies.first)
