@@ -13,9 +13,9 @@
   password: 'jjj', 
   profile_pic_link: 'www.jane.com' }])
 
-# posts = Post.create([{ users_id: 1, message: 'Hello World' },
+  Post.create([{ user_id: 1, message: 'Hello World' }, { user_id: 1, message: 'Huzzah!' }])
 
-#
+
 
   # Character.create(name: 'Luke', movie: movies.first)
 #
