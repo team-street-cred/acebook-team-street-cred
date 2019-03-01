@@ -1,7 +1,11 @@
+<ul id="posts">
 <% @posts.each do |post| %>
-  <p><%= post.message %></p>
+  <li>
+    <%= post.message %><br />
+    <%= post.updated_at.strftime('%I:%M%p - %e %b %Y ') %>
+  </li>
 <% end %>
-
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+</ul>
+<%#= link_to new_post_path do %>
+<!--  New post-->
+<%# end %>
