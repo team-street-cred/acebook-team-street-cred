@@ -16,5 +16,16 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <script>
+    function ChangeLikeButton() {
+      var button = document.getElementById("like")
+      if (button.innerHTML === "Unlike") {
+        button.innerHTML = "Like"
+      } else {
+        button.innerHTML = "Unlike"
+      }
+    }
+
+    </script>
   </body>
 </html>
