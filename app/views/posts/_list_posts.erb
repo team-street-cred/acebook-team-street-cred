@@ -14,9 +14,10 @@
       <% end %>
     <% end %>
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
+    <p id="count_with_post.id=<%= post.id %>"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
     <% post_like = post.likes.find { |like| like.user_id == current_user.id} %>
-      <%= button_tag 'Like', id: :like, onclick: "ChangeLikeButton()" %>
+    <% post_like ? (like_or_unlike = "Unlike") : (like_or_unlike = "Like")%>
+    <%= button_tag like_or_unlike, id: "like_with_post.id=#{post.id}", onclick: "ChangeLikeButton(#{post.id})" %>
   </li>
     <% end %>
     </ul>

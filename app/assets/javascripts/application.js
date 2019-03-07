@@ -12,3 +12,36 @@
 //
 //= require rails-ujs
 //= require_tree .
+
+function ChangeLikeCount(post_id) {
+  display = document.getElementById("count_with_post.id=" + post_id)
+  $.ajax({
+    type: "GET",
+    url: ("/posts/" + post_id + "/likes"),
+    data: { post_id: post_id },
+    success: function(response) {
+      count = response.length
+      display.innerHTML = (count + " like(s)")
+    }
+  })
+}
+
+function ChangeLikeButton(post_id) {
+  var button = document.getElementById("like_with_post.id=" + post_id)
+  if (button.innerHTML === "Like") {
+    button.innerHTML = "Unlike"
+    $.ajax({
+      type: "POST",
+      url: ("/posts/" + post_id + "/likes"),
+      data: { post_id: post_id }
+    })
+  } else {
+    button.innerHTML = "Like"
+    $.ajax({
+      type: "POST",
+      url: ("/posts/" + post_id + "/likes/destroy_like_on_post"),
+      data: { post_id: post_id }
+    })
+  }
+  ChangeLikeCount(post_id)
+}

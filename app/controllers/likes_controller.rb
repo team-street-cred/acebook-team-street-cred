@@ -4,7 +4,8 @@ class LikesController < ApplicationController
   # GET /likes
   # GET /likes.json
   def index
-    @likes = Like.all
+    likes = @post.likes.all
+    render json: likes
   end
 
   # GET /likes/1
@@ -21,8 +22,8 @@ class LikesController < ApplicationController
   def edit
   end
 
-  # POST /likes
-  # POST /likes.json
+  # POST /posts/:post_id/likes
+  # POST /posts/:post_id/likes.json
   def create
     if already_liked?
       redirect_to posts_path, notice: 'Already liked.'
@@ -31,8 +32,8 @@ class LikesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /likes/1
-  # PATCH/PUT /likes/1.json
+  # PATCH/PUT /posts/:post_id/likes/1
+  # PATCH/PUT /posts/:post_id/likes/1.json
   def update
     respond_to do |format|
       if @like.update(like_params)
@@ -45,14 +46,13 @@ class LikesController < ApplicationController
     end
   end
 
-  # DELETE /likes/1
-  # DELETE /likes/1.json
+  # POST /posts/:post_id/likes/destroy_like_on_post
+  # POST /posts/:post_id/likes/destroy_like_on_post.json
 
   def destroy_like_on_post
     like = Like.where('user_id = ? AND post_id = ?', current_user.id, @post.id).first
     Like.destroy(like.id)
     redirect_to posts_path
-
   end
 
   def destroy
