@@ -1,0 +1,27 @@
+<div id="posts">
+<ul id="posts">
+<% @posts.each do |post| %>
+  <li class='posts' id='<%= post.id %>'>
+    <p class='posts'>
+      <%= post.message %>
+    </p>
+    <p class='time'>
+      <%= post.updated_at.strftime('%I:%M%p - %e %b %Y ') %>
+    </p>
+    <%= form_tag("posts/#{post.id}/edit", method: "get") do %>
+      <%= submit_tag("Edit") %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
+    <% post_like = post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if post_like %>
+      <%=form_tag("posts/#{post.id}/likes/destroy_like_on_post", method: "post") do %>
+      <%=submit_tag("Unlike") %>
+      <% end %>
+    <% else %>
+      <%= button_to 'Like', post_likes_path(post), method: :post %>
+    <% end %>
+  </li>
+    <% end %>
+    </ul>
+    </div>
