@@ -9,9 +9,11 @@
       <%= post.updated_at.strftime('%I:%M%p - %e %b %Y ') %>
     </p>
     <%= form_tag("posts/#{post.id}/edit", method: "get") do %>
+      <% if post.user_id == current_user.id %>
       <%= submit_tag("Edit") %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     <% end %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
     <% post_like = post.likes.find { |like| like.user_id == current_user.id} %>
     <% if post_like %>
