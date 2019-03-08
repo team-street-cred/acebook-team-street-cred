@@ -14,34 +14,33 @@
 //= require_tree .
 
 function ChangeLikeCount(post_id) {
-  display = document.getElementById("count_with_post.id=" + post_id)
+  display = document.getElementById("count_with_post.id=" + post_id);
   $.ajax({
     type: "GET",
-    url: ("/posts/" + post_id + "/likes"),
+    url: "/posts/" + post_id + "/likes",
     data: { post_id: post_id },
     success: function(response) {
-      count = response.length
-      display.innerHTML = (count + " like(s)")
+      count = response.length;
+      display.innerHTML = count + " like(s)";
     }
-  })
+  });
 }
 
 function ChangeLikeButton(post_id) {
-  var button = document.getElementById("like_with_post.id=" + post_id)
+  var button = document.getElementById("like_with_post.id=" + post_id);
   if (button.innerHTML === "Like") {
-    button.innerHTML = "Unlike"
-    $.ajax({
-      type: "POST",
-      url: ("/posts/" + post_id + "/likes"),
-      data: { post_id: post_id }
-    })
+    button.innerHTML = "Unlike";
+    $.post("/posts/" + post_id + "/likes", { post_id: post_id }, function() {
+      ChangeLikeCount(post_id);
+    });
   } else {
-    button.innerHTML = "Like"
-    $.ajax({
-      type: "POST",
-      url: ("/posts/" + post_id + "/likes/destroy_like_on_post"),
-      data: { post_id: post_id }
-    })
+    button.innerHTML = "Like";
+    $.post(
+      "/posts/" + post_id + "/likes/destroy_like_on_post",
+      { post_id: post_id },
+      function() {
+        ChangeLikeCount(post_id);
+      }
+    );
   }
-  ChangeLikeCount(post_id)
 }
