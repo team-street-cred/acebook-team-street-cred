@@ -20,9 +20,10 @@ class PostsController < ApplicationController
   end
 
   def wall
-    no_such_wall unless User.where(id: params[:wall]).count == 1
-    @posts = Post.where(wall: params[:wall]).order(updated_at: :desc)
-    @wall_owner = User.find(params[:wall])
+    if User.where(id: params[:wall]).count.zero?
+      params[:wall] = current_user.id
+    end
+    render_wall
   end
 
   def edit
@@ -66,14 +67,20 @@ class PostsController < ApplicationController
     end
   end
 
-  def no_such_wall
-    respond_to do |format|
-      format.html { redirect_to posts_url,
-         notice: 'That user does not exist :('
-      }
-      format.json { head :no_content }
-    end
+  def render_wall
+    @posts = Post.where(wall: params[:wall]).order(updated_at: :desc)
+    @wall_owner = User.find(params[:wall])
   end
+
+  # def no_such_wall
+  #   p "no wall here"
+  #   respond_to do |format|
+  #     format.html { redirect_to posts_url,
+  #        notice: 'That user does not exist :('
+  #     }
+  #     format.json { head :no_content }
+  #   end
+  # end
   # def update_params
   #   params.require(:updated_post).require(:message)
   # end
