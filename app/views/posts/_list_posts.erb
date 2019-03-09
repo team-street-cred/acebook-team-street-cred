@@ -5,6 +5,10 @@
     <p class='posts'>
       <%= post.message %>
     </p>
+    <div class='posted_by'>
+    Posted by: <div class='name'><a href="/<%=post.user.id %>" ><%= post.user.first_name %></a>
+</div>
+  </div>
     <p class='time'>
       <%= post.updated_at.strftime('%I:%M%p - %e %b %Y ') %>
     </p>

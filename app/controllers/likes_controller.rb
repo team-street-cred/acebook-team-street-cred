@@ -34,7 +34,6 @@ class LikesController < ApplicationController
     end
   end
 
-
   # POST /posts/:post_id/likes/destroy_like_on_post
   # POST /posts/:post_id/likes/destroy_like_on_post.json
 

@@ -4,9 +4,9 @@ require 'web_helper'
 RSpec.feature "Not update posts", type: :feature do
   scenario "User cannot update others' posts" do
     log_in
-    expect(page.find('#posts li:nth-child(2)')).to have_content("Huzzay!")
+    expect(page.find('#posts li:nth-child(1)')).to have_content("Huzzay!")
     expect { 
-      page.find('#posts li:nth-child(2)').click_button('Edit') 
+      page.find('#posts li:nth-child(1)').click_button('Edit') 
     }.to raise_error(Capybara::ElementNotFound)
 
   end
