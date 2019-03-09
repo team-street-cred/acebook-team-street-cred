@@ -17,7 +17,7 @@
       <%= submit_tag("Edit") %>
       <% end %>
     <% end %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     <p id="count_with_post.id=<%= post.id %>"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
     <% post_like = post.likes.find { |like| like.user_id == current_user.id} %>
     <% post_like ? (like_or_unlike = "Unlike") : (like_or_unlike = "Like")%>

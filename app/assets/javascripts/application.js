@@ -21,7 +21,11 @@ function ChangeLikeCount(post_id) {
     data: { post_id: post_id },
     success: function(response) {
       count = response.length;
-      display.innerHTML = count + " like(s)";
+      if (count > 1) {
+        display.innerHTML = count + " likes";
+      } else {
+        display.innerHTML = count + " like";
+      }
     }
   });
 }
