@@ -21,23 +21,6 @@ function ChangeLikeCount(post_id) {
   });
 }
 
-// function ChangeLikeCount(post_id) {
-//   display = document.getElementById("count_with_post.id=" + post_id);
-//   $.ajax({
-//     type: "GET",
-//     url: "/posts/" + post_id + "/likes",
-//     data: { post_id: post_id },
-//     success: function(response) {
-//       count = response.length;
-//       if (count > 1) {
-//         display.innerHTML = count + " likes";
-//       } else {
-//         display.innerHTML = count + " like";
-//       }
-//     }
-//   });
-// }
-
 function ChangeLikeButton(post_id) {
   var button = document.getElementById("like_with_post.id=" + post_id);
   if (button.innerHTML === "Like") {
