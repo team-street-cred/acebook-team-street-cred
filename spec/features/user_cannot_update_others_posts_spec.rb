@@ -1,8 +1,17 @@
 require 'rails_helper'
 require 'web_helper'
 
-RSpec.feature "Update posts", type: :feature do
-  scenario "User can update post" do
+RSpec.feature "Not update posts", type: :feature do
+  scenario "User cannot update others' posts" do
+    log_in
+    expect(page.find('#posts li:nth-child(1)')).to have_content("Huzzay!")
+    expect { 
+      page.find('#posts li:nth-child(1)').click_button('Edit') 
+    }.to raise_error(Capybara::ElementNotFound)
+
+  end
+
+  scenario "User can update own posts" do
     log_in
     click_link "new post"
     fill_in "Message", with: "Hello, world!"

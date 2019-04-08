@@ -1,35 +1,7 @@
-<%= link_to new_post_path, id: 'new_post' do %>
+<%= link_to "#{current_user.id}/posts/new", id: 'new_post' do %>
   new post
 <% end %>
 <%= link_to '/', id: 'header' do %>
   <h1>acebook</h1>
 <% end %>
-<div id="posts">
-<ul id="posts">
-<% @posts.each do |post| %>
-  <li class='posts' id='<%= post.id %>'>
-    <p class='posts'>
-      <%= post.message %>
-    </p>
-    <p class='time'>
-      <%= post.updated_at.strftime('%I:%M%p - %e %b %Y ') %>
-    </p>
-    <%= form_tag("posts/#{post.id}/edit", method: "get") do %>
-      <%= submit_tag("Edit") %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <%= button_to 'Like', post_likes_path(post), method: :post %>
-    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'like' : 'likes' %></p>
-
-    <%=form_tag("posts/#{post.id}/likes/destroy_like_on_post", method: "post") do %>
-      <%=submit_tag("Unlike") %>
-    <% end %>
-  </li>
-    <% end %>
-    </ul>
-    </div>
-    <%= link_to new_post_path do %>
-      New post
-    <% end %>
-  </body>
-</html>
+<%= render 'list_posts', :locals => {:posts => @posts} %>

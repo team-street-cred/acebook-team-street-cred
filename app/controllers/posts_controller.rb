@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(message: post_params, user_id: current_user.id)
-    redirect_to posts_path
+    @post = Post.create(post_params)
+    redirect_to "/#{params[:post][:wall]}"
   end
 
   def index
@@ -15,8 +15,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update_attributes(message: post_params)
-    redirect_to posts_url
+    @post.update_attributes(message: params[:post][:message])
+    redirect_to "/#{@post.wall}"
+  end
+
+  def wall
+    if User.where(id: params[:wall]).count.zero?
+      params[:wall] = current_user.id
+    end
+    render_wall
   end
 
   def edit
@@ -38,7 +45,10 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).require(:message)
+    { message: params.require(:post).require(:message),
+      user_id: current_user.id,
+      wall: params.require(:post).require(:wall)
+    }
   end
 
   def successful_delete
@@ -56,6 +66,21 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def render_wall
+    @posts = Post.where(wall: params[:wall]).order(updated_at: :desc)
+    @wall_owner = User.find(params[:wall])
+  end
+
+  # def no_such_wall
+  #   p "no wall here"
+  #   respond_to do |format|
+  #     format.html { redirect_to posts_url,
+  #        notice: 'That user does not exist :('
+  #     }
+  #     format.json { head :no_content }
+  #   end
+  # end
   # def update_params
   #   params.require(:updated_post).require(:message)
   # end
