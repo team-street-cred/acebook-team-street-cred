@@ -65,4 +65,4 @@ heroku run rake db:seed -a [name of heroku app]
 
 ## Shared learning documentation
 
-https://github.com/david-mears/acebook-team-street-cred/wiki
+https://github.com/team-street-cred/acebook-team-street-cred/wiki
